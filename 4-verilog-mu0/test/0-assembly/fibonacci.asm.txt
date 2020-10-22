@@ -1,0 +1,27 @@
+TOP:
+    LDA N
+    SUB I
+    JNE LOOP
+    STP
+
+LOOP:
+    LDA I
+    ADD ONE
+    STO I
+    LDA PREV
+    ADD CURR
+    STO NEXT
+    OUT
+    LDA CURR
+    STO PREV
+    LDA NEXT
+    STO CURR
+    JMP TOP
+
+
+N: 10
+I: 0
+PREV: 0
+CURR: 1
+NEXT: 0
+ONE: 1

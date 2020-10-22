@@ -1,0 +1,19 @@
+TOP:
+    LDA B
+    JNE MULT
+    LDA PROD
+    OUT
+    STP
+MULT:
+    LDA PROD
+    ADD A
+    STO PROD
+    LDA B
+    ADD NEG_ONE
+    STO B
+    JMP TOP
+
+A: 7
+B: 9
+PROD: 0
+NEG_ONE: -1

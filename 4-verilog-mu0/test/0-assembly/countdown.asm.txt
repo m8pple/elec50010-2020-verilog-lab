@@ -1,0 +1,7 @@
+   LDA TEN
+Z: ADD NEG_ONE
+   OUT
+   JNE Z
+   STP
+TEN: 10
+NEG_ONE: -1
