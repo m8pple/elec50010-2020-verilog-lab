@@ -197,7 +197,7 @@ main phases:
     command continuation:
     ```bash
     $ iverilog -Wall -g 2012 -s and_not_testbench -o and_not_testbench \
-         and_gate.v or_gate.v  
+         and_gate.v or_gate.v and_not_testbench.v 
     ```
 
     This command compiles the Verilog modules into a simulation
