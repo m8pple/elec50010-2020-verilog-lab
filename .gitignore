@@ -1,3 +1,4 @@
 *.vcd
 a.out
 obj_dir
+0-tools/and_not_testbench

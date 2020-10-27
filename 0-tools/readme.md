@@ -197,7 +197,7 @@ main phases:
     command continuation:
     ```bash
     $ iverilog -Wall -g 2012 -s and_not_testbench -o and_not_testbench \
-         and_gate.v or_gate.v and_not_testbench.v 
+         and_gate.v not_gate.v and_not_testbench.v 
     ```
 
     This command compiles the Verilog modules into a simulation
@@ -365,12 +365,12 @@ during simulation, including the values of pre-determined signals.
     they print. Replace all four existing `$display` statements with:
     ```Verilog
     if ( d != ~(a&b) ) begin
-        $display("Error : a=%d, b=%d, d=%d,  expected=%d", a, b, dk, ~(a&b));
+        $display("Error : a=%d, b=%d, d=%d,  expected=%d", a, b, d, ~(a&b));
     end
     ```
     This should ensure that the printing only happens when `d` has the wrong value.
 
-5.  Compile and simulate the test-bench. Given the `and` and `nno` gates are
+5.  Compile and simulate the test-bench. Given the `and` and `not` gates are
     correct, no output should be printed.
 
 6.  Break the `and` gate again, and then re-simulate. You should find that
