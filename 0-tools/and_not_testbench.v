@@ -15,7 +15,7 @@ module and_not_testbench();
         a=0;
         b=0;
         #1; // Delay one timeunit
-        //assert(d==1);
+        assert(d==1); 
         
         a=0;
         b=1;
