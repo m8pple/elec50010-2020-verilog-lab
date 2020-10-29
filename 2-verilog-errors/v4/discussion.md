@@ -7,6 +7,5 @@
   r = 0;
   if(a==1) r = 1;
   if(b==1) r = 1;
-
 ```
 * The issue is that the or gate doesn't have any method to set r to 0 if ```a || b``` is false.
