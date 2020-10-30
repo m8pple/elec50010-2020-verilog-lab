@@ -5,7 +5,7 @@ Tools
 
 The purpose of this section is to get some experience of different
 tools used when developing, testing, and debugging digital
-designs. 
+designs.
 
 1. Compile and install the Icarus Verilog simulator
 
@@ -46,8 +46,8 @@ The main installation steps for Ubuntu 18.04 are:
     ```
 
 2.  Install pre-requisite libraries and packages:
-    
-    `apt get gperf autoconf bison gcc make`
+
+    `apt get gperf autoconf bison gcc make flex`
 
     This should bb enough for plain Ubuntu 18.04, and probably other recent Ubuntus other distros.,
     though there may be some missing libraries that get reported in the next steps.
@@ -63,7 +63,7 @@ The main installation steps for Ubuntu 18.04 are:
     (and much other open-source software) to compile on a very wide range of unix-like platforms.
 
 4.  Run the configuration script:
-    
+
     ```
     ./configure
     ```
@@ -79,7 +79,7 @@ The main installation steps for Ubuntu 18.04 are:
     make
     ```
 
-    Makefiles are a common way of managing the compilation of software, particularly when 
+    Makefiles are a common way of managing the compilation of software, particularly when
     multiple source files are being compiled, and when other tools need to be run as
     part of the build process. Describing the build steps as a makefile provides a
     number of advantages, such as minimal rebuilds that only recompile files that have
@@ -113,7 +113,7 @@ take a bit of time. If instead you were to perform `apt get Verilog` it would
 download pre-compiled binaries and data files, then install them directly.
 The pre-compiled binary packages are much more convenient to use, particularly
 because distribution maintainers like Ubuntu take care to make sure that
-all their binary packages work together. However, you will often find the 
+all their binary packages work together. However, you will often find the
 need to compile packages from source, for a number of reasons:
 
 1. The packaged binary may be too old, and lack recent bug-fixes or features.
@@ -139,7 +139,7 @@ common steps when simulating Verilog, VHDL, or any other hardware
 description language.
 
 The files `and_gate.v`, `not_gate.v`, and `and_not_testbench.v` each describe Verilog modules, and
-we wish to simulate them as a single system. 
+we wish to simulate them as a single system.
 
 -> Open the files in a text editor and look at the modules.
 
@@ -197,7 +197,7 @@ main phases:
     command continuation:
     ```bash
     $ iverilog -Wall -g 2012 -s and_not_testbench -o and_not_testbench \
-         and_gate.v or_gate.v and_not_testbench.v 
+         and_gate.v or_gate.v and_not_testbench.v
     ```
 
     This command compiles the Verilog modules into a simulation
@@ -282,7 +282,7 @@ needs to be modified to produce them.
 You may wish to play around with the interface, as there are many features
 making it easier to work with, such as:
 
--   "Toggle Trace Heir" : Used to prefix the signals with their position in 
+-   "Toggle Trace Heir" : Used to prefix the signals with their position in
     the hierarchy.
 
 -   Left-clicking in the "Waves" pane shows a vertical line, allowing you to
@@ -311,7 +311,7 @@ to be able to reliably calculate the expected output signals and compare them,
 and even if they could it would take days to check one waveform. We need an
 automated way of indicating what the expected behaviour is, and then be
 informed if the behaviour is ever violated. In Verilog this is performed using `assert`,
-which has a similar intended purpose and behaviour to `assert` in C++. 
+which has a similar intended purpose and behaviour to `assert` in C++.
 
 The `and_not_testbench` currently contains no assertions, so it has no
 idea whether the `and` and `not` gate are correct:
@@ -381,5 +381,3 @@ out variables under very specific conditions. So if you have thousands of
 signals over thousands of cycles, it can be used to extract the exact
 situation where a problem happened. Waveforms are often more useful
 when you don't know why things failed, and you are looking for clues.
-
-
