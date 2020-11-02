@@ -1,0 +1,3 @@
+* Proper discussion between the writer of the testbench and the writer of the simulator about the functions of the program without disclosing the methods used would likely prevent errors such as this. The writer of the testbench likely missed the final line in add_sub_logic
+* Tests where the output just overflows (ie resulting in 2^16), as well as tests where b is negative and a is less negative and so the MSBs change from 1 to 0 without overflowing.
+* Not 100% sure?
