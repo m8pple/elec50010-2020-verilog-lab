@@ -32,7 +32,7 @@ defmodule TestbenchesTest do
   end
 
   test "Multiplier Parallel" do
-    # File doesn't exist
+    run_tests("multiplier_parallel", ["v0"])
   end
 
   test "Multiplier Pipelined" do
