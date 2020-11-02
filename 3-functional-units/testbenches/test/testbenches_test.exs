@@ -1,9 +1,10 @@
 defmodule TestbenchesTest do
+@tag timeout: :infinity
   use ExUnit.Case
   doctest Testbenches
 
-  def compile(name, extension, tb_extension), do: ["-Wall", "-g2012", "-s", "#{name}_tb", "-o", "#{name}_tb", "../"<>name<>"_"<>extension<>".v", "../"<>name<>"_tb#{if tb_extension != "", do: "_#{tb_extension}", else: ""}.v"]
-
+  def compile(module, version, ""), do: ["-Wall", "-g2012", "-s", "#{module}_tb", "-o", "#{module}_tb", "../#{module}_#{version}.v", "../#{module}_tb.v"]
+  def compile(module, version, tb), do: ["-Wall", "-g2012", "-s", "#{module}_tb", "-o", "#{module}_tb", "../#{module}_#{version}.v", "../#{module}_tb_#{tb}.v"]
   def run_tests(name, versions, tb_versions\\[""]) do
     Enum.each(tb_versions, fn tb ->
       IO.puts("Starting testbench #{name} #{tb}")
