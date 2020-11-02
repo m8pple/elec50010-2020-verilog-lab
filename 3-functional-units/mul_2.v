@@ -11,5 +11,7 @@ module mul2 (
   assign out_1 = a[0] & b[1];
   assign out_2 = a[1] & b[0];
   assign out_3 = a[1] & b[1];
-  assign r = out_0 + ((out_1 + out_2) << 1) + (out_3 << 2);
+  always @ * begin
+    r = ((((out_3 << 1) + out_1 + out_2) << 1) + out_0);
+  end
 endmodule

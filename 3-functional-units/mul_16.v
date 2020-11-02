@@ -11,5 +11,7 @@ module mul16 (
   mul8 mul8_1(a[15:8], b[7:0], out_1);
   mul8 mul8_2(a[7:0], b[15:8], out_2); 
   mul8 mul8_3(a[15:8], b[15:8], out_3);
-  assign r = out_0 + ((out_1 + out_2) << 16) + (out_3 << 32);
+  always @ * begin
+    r = ((((out_3 << 8) + out_1 + out_2) << 8) + out_0);
+  end
 endmodule
