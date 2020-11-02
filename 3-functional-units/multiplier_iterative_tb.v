@@ -1,6 +1,3 @@
-
-
-
 module multiplier_iterative_tb(
 );
     logic clk;
