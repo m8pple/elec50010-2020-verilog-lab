@@ -14,8 +14,8 @@ module multiplier_parallel(
   mul16 mul16_1(a[31:16], b[15:0], out_1);
   mul16 mul16_2(a[15:0], b[31:16], out_2); 
   mul16 mul16_3(a[31:16], b[31:16], out_3);
-  always_ff @(negedge clk) begin
-    r <= out_0 + out_1 + out_2 << 16 + out_3 << 32;
+  always @ * begin
+    r <= out_0 + ((out_1 + out_2) << 16) + (out_3 << 32);
     valid_out <= valid_in;
   end
 endmodule

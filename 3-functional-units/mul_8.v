@@ -11,5 +11,5 @@ module mul8 (
   mul4 mul4_1(a[7:4], b[3:0], out_1);
   mul4 mul4_2(a[3:0], b[7:4], out_2); 
   mul4 mul4_3(a[7:4], b[7:4], out_3);
-  assign r = 5;//out_0 + out_1 + out_2 << 4 + out_3 << 8;
+  assign r = out_0 + ((out_1 + out_2) << 4) + (out_3 << 8);
 endmodule
