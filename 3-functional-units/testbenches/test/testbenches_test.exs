@@ -32,8 +32,8 @@ defmodule TestbenchesTest do
   end
 
   test "Multiplier Parallel" do
-    #Broken
-    #run_tests("multiplier_parallel", ["v0"])
+    Broken
+    run_tests("multiplier_parallel", ["v0"])
   end
 
   test "Multiplier Pipelined" do
