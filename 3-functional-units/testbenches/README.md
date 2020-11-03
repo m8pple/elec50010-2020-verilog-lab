@@ -23,5 +23,8 @@ test "Test name" do
   assert(1==1, "1 != 1 now")
   # you can also just throw an error with
   flunk("The program shouldn't've got here")
+  # or log to cerr and cout
+  IO.puts("this will go to cout")
+  IO.warn("this will go to cerr")
 end
 ```
