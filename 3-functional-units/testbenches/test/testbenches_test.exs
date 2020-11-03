@@ -1,7 +1,7 @@
 defmodule TestbenchesTest do
   use ExUnit.Case
   doctest Testbenches
-  @tag timeout: :infinity
+  @moduletag timeout: :infinity
 
   def compile(module, version, ""), do: ["-Wall", "-g2012", "-s", "#{module}_tb", "-o", "#{module}_tb", "../#{module}_#{version}.v", "../#{module}_tb.v"]
   def compile(module, version, tb), do: ["-Wall", "-g2012", "-s", "#{module}_tb", "-o", "#{module}_tb", "../#{module}_#{version}.v", "../#{module}_tb_#{tb}.v"]
@@ -13,13 +13,13 @@ defmodule TestbenchesTest do
         IO.puts("Starting test on #{v}")
         case System.cmd("iverilog", compile(name, v, tb)) do
           {_, 0} -> nil
-          _ -> throw "Compilation failed on #{v}"
+          _ -> flunk "Compilation failed on #{v}"
         end
         case System.cmd("vvp", ["#{name}_tb"]) do
           {_, 0} -> IO.puts("Test on #{v} successful")
           {out, err} ->
             IO.puts(out)
-            throw "Error code #{err} on #{v}"
+            flunk "Error code #{err} on #{v}"
         end
         File.rm("#{name}_tb")
       end)
@@ -31,20 +31,15 @@ defmodule TestbenchesTest do
     |> Enum.each(&File.rm/1)
   end
 
-  test "Multiplier Parallel" do
-    Broken
+  test "Multiplier Parallel", do:
     run_tests("multiplier_parallel", ["v0"])
-  end
 
-  test "Multiplier Pipelined" do
-    run_tests("multiplier_pipelined", ["v0", "v1", "v2", "v3", "v4", "v5"])
-  end
+  test "Multiplier Pipelined", do:
+    run_tests("multiplier_pipelined", ["v0", "v1", "v2", "v3", "v4"]) #, "v5"]) # v5 commented out as it takes over 5 minutes to run on my laptop.
 
-  test "Multipler Iterative" do
+  test "Multipler Iterative", do:
     run_tests("multiplier_iterative", ["v0", "v1", "v2", "v3"])
-  end
 
-  test "Register Random" do
+  test "Register Random", do:
     run_tests("register_file", ["v0", "v1", "v2", "v3"], ["random", "simple"])
-  end
 end
