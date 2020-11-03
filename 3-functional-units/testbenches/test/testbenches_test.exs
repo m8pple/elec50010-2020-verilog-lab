@@ -11,20 +11,37 @@ defmodule TestbenchesTest do
       IO.puts("Starting testbench #{name} #{tb}")
       Enum.each(versions, fn v ->
         IO.puts("Starting test on #{v}")
+
+        # Run the compilation & elaboration
+
         case System.cmd("iverilog", compile(name, v, tb)) do
           {_, 0} -> nil
           _ -> flunk "Compilation failed on #{v}"
         end
+
+        # As running ```./<verilog "binary">```
+        # is an alias for ```vvp <verilog "binary>```
+        # We pattern-match the return code
+        # 0 is a successful test
+        # Anything else is an error
+
         case System.cmd("vvp", ["#{name}_tb"]) do
-          {_, 0} -> IO.puts("Test on #{v} successful")
+          {_, 0} -> IO.puts("Test on #{name} #{v} successful")
           {out, err} ->
             IO.puts(out)
-            flunk "Error code #{err} on #{v}"
+            flunk "Error code #{err} on #{name} #{v}"
         end
         File.rm("#{name}_tb")
       end)
       IO.puts("Testbench #{name} #{tb} successful")
     end)
+
+    # If the program made it here there weren't any errors
+    # So we tidy up after ourselves by deleting the files we generated
+    # Pseudobinaries will end in _tb, and var dumps will end in .vcd
+    # So we run a regex search for any of these in the current directory
+    # And delete them.
+
     File.ls()
     |> elem(1)
     |> Enum.filter(&Regex.match?(~r/.*(\.vcd|_tb)/, &1))
