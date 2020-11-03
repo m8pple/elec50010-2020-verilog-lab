@@ -9,8 +9,8 @@ To run the testbenches, run:
 ```mix test```
 
 ## Files
-The testbench is [here](/test/testbenches_test.exs)  
-The Elixir version of the parallel multiplier is [here](/lib/mul.ex)  
+The testbench is [here](test/testbenches_test.exs)  
+The Elixir version of the parallel multiplier is [here](lib/mul.ex)  
 
 ## Editing
 To create a new testbench, add one to test/testbenches_test.exs as follows: 
