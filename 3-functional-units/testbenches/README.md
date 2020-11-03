@@ -1,21 +1,27 @@
 # Testbenches
 
-**TODO: Add description**
+## Dependencies:
+To run the testbenches you must have mix installed. It can be installed using:  
+```sudo apt install elixir```  
 
-## Installation
+## Running
+To run the testbenches, run:
+```mix test```
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `testbenches` to your list of dependencies in `mix.exs`:
+## Files
+The testbench is [here](/test/testbenches_test.exs)  
+The Elixir version of the parallel multiplier is [here](/lib/mul.ex)  
 
-```elixir
-def deps do
-  [
-    {:testbenches, "~> 0.1.0"}
-  ]
+## Editing
+To create a new testbench, add one to test/testbenches_test.exs as follows: 
+```ex
+test "Test name" do
+  # code you want to run
+  # you can add assertions in the form:
+  assert(1 == 1)
+  # or with an error message
+  assert(1==1, "1 != 1 now")
+  # you can also just throw an error with
+  flunk("The program shouldn't've got here")
 end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/testbenches](https://hexdocs.pm/testbenches).
-
