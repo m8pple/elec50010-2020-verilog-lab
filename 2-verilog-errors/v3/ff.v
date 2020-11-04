@@ -4,10 +4,8 @@ module ff(
     input logic d,
     output logic q
 );
-    always @(d or c) begin
-        if (ce==1) begin
-            q = d;
-        end
+    always_ff @(posedge c) if(ce==1) begin
+      q = d;
     end
 
 endmodule

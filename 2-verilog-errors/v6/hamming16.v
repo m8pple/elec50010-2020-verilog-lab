@@ -4,7 +4,7 @@ module hamming16(
 );
     logic[3:0] count_lo;
     logic[3:0] count_hi;
-    logic [3:0] count_sum;
+    logic [4:0] count_sum;
 
     hamming8 lo(x[7:0], count_lo[3:0]);
     hamming8 hi(x[15:8], count_hi[3:0]);

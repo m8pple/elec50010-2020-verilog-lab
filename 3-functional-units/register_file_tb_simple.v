@@ -1,6 +1,6 @@
 `timescale 1ns/100ps
 
-module register_file_tb_simple(
+module register_file_tb(
 );
     logic clk;
     logic reset;
@@ -12,8 +12,8 @@ module register_file_tb_simple(
     /* Generate clock, set stimulus, and also check output. */
     initial begin
         $timeformat(-9, 1, " ns", 20);
-        $dumpfile("register_file_tb_simple.vcd");
-        $dumpvars(0, register_file_tb_simple);
+        $dumpfile("register_file_tb.vcd");
+        $dumpvars(0, register_file_tb);
 
         /* Clock low. */
         clk = 0;

@@ -47,7 +47,7 @@ module ff_tb();
         assert(q==0); 
         d=1;          
         #1;
-        assert(q==1); 
+        assert(q==0); 
 
 
         $finish;

@@ -5,6 +5,7 @@ module or_tb();
     initial begin
         $dumpfile("or.vcd");
         $dumpvars(0, or_tb);
+        $monitor("a:%d, b:%d, r:%d", a, b, r);
 
         a=1;
         b=1;
@@ -25,6 +26,8 @@ module or_tb();
         b=0;
         #1;
         assert(r==0);
+
+        $finish;
     end
 
     or_gate dut(a,b,r);

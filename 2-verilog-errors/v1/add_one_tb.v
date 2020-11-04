@@ -2,7 +2,6 @@
 
 module add_one_tb(
 );
-
     logic [8:0] x;
     logic [8:0] y_expected;
     wire logic [8:0] y;
@@ -10,8 +9,6 @@ module add_one_tb(
     initial begin
         $dumpfile("add_one_tb.vcd");
         $dumpvars(0, add_one_tb);
-
-
         x = 0;
         y_expected = 1;
         repeat (256) begin
@@ -19,8 +16,8 @@ module add_one_tb(
             assert(y==y_expected) else $fatal(1, "x = %d, got %d", x, y);
 
             #1;
-            x = x + 17;
-            y_expected = x + 1;
+            x = x + 1;
+            y_expected = (x + 1) % 256;
         end
 
     end

@@ -1,19 +1,13 @@
 module or_gate(
     input logic a,
     input logic b,
-    output logic  r
+    output logic r
 );
 
     always_comb begin
-        if (a==1 && b==1) begin
-            r = 1;
-        end
-        if (a==1) begin
-            r = 1;
-        end
-        if (b==1) begin
-            r = 1;
-        end
+      r = 0;
+      if(a==1) r = 1;
+      if(b==1) r = 1;
     end
 
 endmodule

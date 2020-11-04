@@ -1,0 +1,3 @@
+* The incorrect assumption is that verilog uses big-endianness for its busses, when in fact it uses little-endian. This means that the LSB is at index 0 & the MSB it at the last index.
+* Either use 8x 4 bit adders (for simplicity) or 32 1 bit adders - the 8x 4 bit adders would be easier to debug but the 32 1 bit adders would mean fewer blocks.
+* As the testbench loops over each possible value, this would be 2^32 tests (~4.3e9), which would take an incredibly long time. For this reason we would need to run a selection of special case tests (such as 2^31 + 2^31 and (2^32 - 1) + (2^31 - 1)) as well as a few randomised tests to catch errors in general use that our testbench may have missed.
